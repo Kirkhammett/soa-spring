@@ -1,0 +1,14 @@
+### Example user template
+
+# IntelliJ project files
+/.mvn/
+target/
+.idea/*
+*.iml
+*.gradle
+*.bat
+gradle*
+/src/main/resources/db.properties
+/.idea/
+/target/
+src/main/resources/
