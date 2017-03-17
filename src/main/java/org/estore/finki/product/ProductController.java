@@ -12,6 +12,16 @@ public class ProductController {
     @Autowired
     ProductRepository productRepository;
 
+    @RequestMapping()
+    @ResponseBody
+    public String defaultMethod(){
+        return "</br><p>Methods</p><ul>" +
+                "<li>/getProducts</li>" +
+                "<li>/getProductById/{id}</li>" +
+                "<li>/createProduct</li>" +
+                "<li>/deleteProduct/{id}</li>" +
+                "</ul>";
+    }
     @RequestMapping("/getProducts")
     public List<Product> getAllProducts(@RequestParam(value="name", defaultValue="World") String name) {
         List<Product> products = (List<Product>) productRepository.findAll();

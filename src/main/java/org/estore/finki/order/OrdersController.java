@@ -17,6 +17,18 @@ public class OrdersController {
     OrdersRepository orderRepository;
     @Autowired
     ProductRepository productRepository;
+
+    @RequestMapping()
+    @ResponseBody
+    public String defaultMethod(){
+        return "</br><p>Methods</p><ul>" +
+                "<li>/getOrders</li>" +
+                "<li>/getOrdersById/{id}</li>" +
+                "<li>/createOrders</li>" +
+                "<li>/deleteOrders/{id}</li>" +
+                "</ul>";
+    }
+
     @RequestMapping("/getOrders")
     public List<Orders> getAllOrderss() {
         List<Orders> orders = (List<Orders>) orderRepository.findAll();
@@ -35,7 +47,7 @@ public class OrdersController {
         Orders order = new Orders(orderName);
         Product p = new Product("gitara","gibson les paul", 30000);
         productRepository.save(p);
-        order.addProductToList(productRepository.findOne(p.getProdId()));
+        order.setProductList(productRepository.findOne(p.getProdId()));
         orderRepository.save(order);
     }
 

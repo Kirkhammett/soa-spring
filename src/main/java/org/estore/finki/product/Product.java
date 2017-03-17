@@ -14,7 +14,7 @@ public class Product {
     private String prodDescription;
     private float prodPrice;
 
-    protected Product() {}
+    public Product() {}
 
     public Product(String prodName, String prodDescription, float prodPrice) {
         this.prodName = prodName;

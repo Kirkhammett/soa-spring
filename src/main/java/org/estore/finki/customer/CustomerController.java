@@ -1,6 +1,7 @@
 package org.estore.finki.customer;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -12,17 +13,28 @@ import java.util.List;
 @RequestMapping("/customer")
 public class CustomerController
 {
+
     @Autowired
     CustomerRepository customerRepository;
+
+    @RequestMapping()
+    @ResponseBody
+    public String defaultMethod(){
+        return "</br><p>Methods</p><ul>" +
+                "<li>/getAllCustomers</li>" +
+                "<li>/getCustomerById/{id}</li>" +
+                "<li>/create</li></ul>";
+    }
+
     @RequestMapping("/getCustomerById/{id}")
     public @ResponseBody String getById(@PathVariable(value="id") Long id, Model model)
     {
 
         model.addAttribute("product", customerRepository.findOne(id));
-        return "product";
+        return customerRepository.findOne(id).toString();
     }
 
-    @RequestMapping("/getAllCustomers")
+    @RequestMapping(value = "/getAllCustomers" /*, produces = MediaType.APPLICATION_XML_VALUE */)
     public List<Customer> getById()
     {
         List<Customer> toso = (List<Customer>) customerRepository.findAll();
