@@ -1,0 +1,40 @@
+
+version: '2'
+services:
+  soa-spring-traefik:
+    image: traefik
+    command: -c /dev/null --web --docker --docker.domain=docker.localhost
+    labels:
+      - "traefik.enable=false"
+    ports:
+      - "11000:80"
+      - "11001:8080"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+
+  soa-spring-mysql:
+    image: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: admin-qwerty
+      MYSQL_USER: soa-user
+      MYSQL_PASSWORD: dbp4ss
+      MYSQL_DATABASE: eshop-demo
+    volumes:
+      - /tmp/dck-sql:/var/lib/mysql
+    labels:
+      - "traefik.enable=false"
+
+  soa-spring-app:
+    image: fboev/soa-spring
+    labels:
+      - "traefik.port=8080"
+      - "traefik.backend=soa-spring"
+      - "traefik.frontend.rule=Host:soa-spring.docker.localhost"
+    links:
+      - soa-spring-mysql
+    depends_on:
+      - soa-spring-mysql
+      - soa-spring-traefik
+
+volumes:
+  my-datavolume: {}
