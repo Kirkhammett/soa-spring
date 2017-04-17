@@ -1,4 +1,4 @@
-package org.estore.finki.app;
+package org.estore.finki;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
