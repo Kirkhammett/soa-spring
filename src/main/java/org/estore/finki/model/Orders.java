@@ -1,8 +1,6 @@
-package org.estore.finki.order;
-import org.estore.finki.product.Product;
+package org.estore.finki.model;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -61,8 +59,8 @@ public class Orders {
 
     public float getTotalSum(List<Product> productList){
         /*float price = 0;
-        for (Product product : productList) {
-            price+=product.getProdPrice();
+        for (Product controller : productList) {
+            price+=controller.getProdPrice();
         }
         return price;*/
         return productList.stream().map(product -> product.getProdPrice()).reduce((float) 0, (p1, p2) -> p1 + p2);

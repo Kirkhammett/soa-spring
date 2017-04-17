@@ -1,7 +1,8 @@
-package org.estore.finki.customer;
+package org.estore.finki.controller;
 
+import org.estore.finki.model.Customer;
+import org.estore.finki.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -30,7 +31,7 @@ public class CustomerController
     public @ResponseBody String getById(@PathVariable(value="id") Long id, Model model)
     {
 
-        model.addAttribute("product", customerRepository.findOne(id));
+        model.addAttribute("controller", customerRepository.findOne(id));
         return customerRepository.findOne(id).toString();
     }
 
@@ -46,7 +47,7 @@ public class CustomerController
     {
         Customer toso = new Customer(name,surname);
         customerRepository.save(toso);
-        return "Created new customer: " + toso.toString();
+        return "Created new repository: " + toso.toString();
     }
 
 }

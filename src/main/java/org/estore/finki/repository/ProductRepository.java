@@ -1,6 +1,6 @@
-package org.estore.finki.product;
+package org.estore.finki.repository;
 
-import org.estore.finki.product.Product;
+import org.estore.finki.model.Product;
 import org.springframework.data.repository.CrudRepository;
 
 

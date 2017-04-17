@@ -1,4 +1,4 @@
-package org.estore.finki.customer;
+package org.estore.finki.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

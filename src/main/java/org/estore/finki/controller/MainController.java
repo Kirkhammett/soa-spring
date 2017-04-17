@@ -1,4 +1,4 @@
-package org.estore.finki;
+package org.estore.finki.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

@@ -1,5 +1,6 @@
-package org.estore.finki.order;
+package org.estore.finki.repository;
 
+import org.estore.finki.model.Orders;
 import org.springframework.data.repository.CrudRepository;
 
 /**

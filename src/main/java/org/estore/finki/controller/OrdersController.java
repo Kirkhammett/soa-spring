@@ -1,7 +1,9 @@
-package org.estore.finki.order;
+package org.estore.finki.controller;
 
-import org.estore.finki.product.Product;
-import org.estore.finki.product.ProductRepository;
+import org.estore.finki.model.Product;
+import org.estore.finki.model.Orders;
+import org.estore.finki.repository.OrdersRepository;
+import org.estore.finki.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
